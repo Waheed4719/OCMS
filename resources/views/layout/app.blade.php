@@ -62,7 +62,7 @@
         flex-direction: column;
     }
     .bg-dark{
-      background-color:#189ad3 !important;
+      background-color: #1692BF !important;
     }
 
     .container {

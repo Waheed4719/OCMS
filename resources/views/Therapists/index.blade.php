@@ -63,7 +63,7 @@ body{
 
 
   @foreach ($therapist as $therapists)
-    
+
 
     <div class="p-4 mt-3 mb-3 card">
         <div class="row">

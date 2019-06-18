@@ -23,6 +23,14 @@ class Admin extends Authenticatable
      public function posts(){
        return $this->hasMany('App\post');
      }
+      public function therapists(){
+        return $this->hasMany('App\Therapists');
+      }
+
+
+     public function users(){
+       return $this->hasMany('App\user');
+     }
     protected $fillable = [
         'name', 'email', 'password',
     ];

@@ -12,11 +12,20 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.landing');
 });
 
 Route::resource('posts','PostsController');
 
+
+Route::get('admin/UserRole','AdminController@UserRole')->name('UserRole');
+Route::get('admin/check_therapists','AdminController@check_therapists')->name('check_therapists');
+Route::get('admin/check_admins','AdminController@check_admins')->name('check_admins');
+Route::get('admin/register','Admin\RegisterController@create')->name('admin.register')->middleware('auth:admin');
+Route::post('admin/register','Admin\RegisterController@store')->name('admin.register');
+Route::get('admin/check_normalusers','AdminController@check_normalusers')->name('check_normalusers');
+
+Route::get('admin/blog/view_posts','AdminController@view_posts')->name('view_all');
 
 Route::get('/posts','PostsController@index');
 Route::get('/landing',function(){

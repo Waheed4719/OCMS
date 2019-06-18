@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Admin;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -37,7 +38,9 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:admin');
+        // $this->middleware('guest:admin');
+
+
     }
 
     /**
@@ -61,12 +64,16 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function store(request $data)
     {
-        return Admin::create([
+        Admin::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+      return  redirect('admin/check_admins')->with('success','Admin user created!');
+    }
+    protected function create(){
+      return view('admin.register');
     }
 }

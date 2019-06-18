@@ -23,7 +23,9 @@ html, body {
     margin: 0;
 }
 
-
+#navbarDropdown{
+  color: white;
+}
 
 
 
@@ -41,7 +43,7 @@ ul {
     padding-left: 0;
 }
 footer {
-  margin-top: 5em;
+  /* margin-top: 5em; */
     background-color: #555;
     color: #bbb;
     line-height: 1.5;
@@ -59,6 +61,7 @@ a:hover {
     font-size: 1.375rem;
     padding-bottom: 0.625rem;
 }
+
 .b ul a{
   color: royal blue ;
   font-weight: bold;
@@ -77,6 +80,8 @@ body {
     padding: 1.25rem 1.875rem;
     display: flex;
     flex-wrap: wrap;
+    background-color: #005073;
+
 }
 .ft-main-item {
     padding: 1.25rem;
@@ -87,6 +92,8 @@ body {
     .ft-main {
         justify-content: space-around;
     }
+
+
 }
 @media only screen and (min-width: 77.5rem /*1240px*/ ) {
     .ft-main {
@@ -98,8 +105,11 @@ body {
 .fm {
     display: flex;
     flex-wrap: wrap;
+
 }
-input[type="email"] {
+/* input[type="email"] */
+
+#news_email{
     border: 0;
     padding: 0.625rem;
     margin-top: 0.3125rem;
@@ -115,6 +125,7 @@ input[type="submit"] {
 
 .ft-social {
     padding: 0 1.875rem 1.25rem;
+    background-color: #1692bf;
 }
 .ft-social-list {
     display: flex;
@@ -129,44 +140,183 @@ input[type="submit"] {
 
 .ft-legal {
     padding: 0.9375rem 1.875rem;
-    background-color: #333;
+    background-color: #ffe4dc;
 }
 .ft-legal-list {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    color:black !important;
+    font-weight:bold;
 }
 .ft-legal-list li {
     margin: 0.125rem 0.625rem;
     white-space: nowrap;
+    color:black !important;
+    font-weight:bold;
+}
+.ft-legal-list li a {
+  color:black !important;
+  font-weight:bold;
 }
 /* one before the last child */
 .ft-legal-list li:nth-last-child(2) {
     flex: 1;       /* same as flex-grow: 1; */
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.bg-dark{
+  background-color:#1692BF  !important;
+}
+.wrapper {
+    display: flex;
+    align-items: stretch;
+
+
+}
+
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 70vh;
+    background-color: #0a294a;
+
+}
+
+#sidebar.active {
+    margin-left: -250px;
+
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+#sidebar .dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+
+}
+.one .nav-link{
+  color: white!important;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+#AD{
+  font-size: 22px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 500;
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#sidebar {
+    /* don't forget to add all the previously mentioned styles here too */
+    background:  #287594;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #6d7fcc;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+#sidebar ul li a:hover {
+    color: #7386D5;
+    background: #fff;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background: #6d7fcc;
+}
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #6d7fcc;
+}
 </style>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <a class="navbar-brand" href="#">Navbar</a>
+
+        <a class="navbar-brand" href="#" id="sidebarCollapse">OCMS Admin</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav mr-auto one">
             <li class="nav-item {{ Request::is('landing') ? 'active' : '' }}">
               <a class="nav-link" href= {{ url('/landing') }}>Home</a>
             </li>
-            <li class="nav-item {{ Request::is('therapists') ? 'active' : '' }}">
-              <a class="nav-link" href= {{ url('/therapists') }}>Therapists</a>
+            <li class="nav-item {{ Request::is('UserRole') ? 'active' : '' }}">
+              <a class="nav-link" href= {{ Route('UserRole') }}>User Roles</a>
             </li>
             <li class="nav-item {{ Request::is('posts') ? 'active' : '' }}">
-              <a class="nav-link" href= {{ url('/posts') }}>Posts</a>
+              <a class="nav-link" href= {{ url('/posts') }}>Advices</a>
             </li>
-            <li class="nav-item {{ Request::is('posts/create') ? 'active' : '' }}">
-              <a class="nav-link" href={{ url('/posts/create') }}>Create Post</a>
-            </li>
+
+
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown
@@ -216,19 +366,77 @@ input[type="submit"] {
         </div>
       </div>
     </nav>
-  
+
             </ul>
           </div>
         </div>
       </nav>
-    @else
 
-    @endif
 
-    <div class="container c mt-3">
-    @include('inc.messages')
-    @yield('content')
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>OCMS Sidebar</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <p id="AD">Admin Dashboard</p>
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle active">User Roles</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="{{route("check_admins")}}">Admins</a>
+                        </li>
+                        <li>
+                            <a href="{{route("check_therapists")}}">Therapists</a>
+                        </li>
+                        <li>
+                            <a href="{{route("check_normalusers")}}">Normal Users</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Blog</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="{{route('view_all')}}">View All</a>
+                        </li>
+                        <li>
+                            <a href="#">Create</a>
+                        </li>
+                        <li>
+                            <a href="#">Manage</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="container mt-5 mb-5 d">
+        @include('inc.messages')
+        @yield('content')
+        </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
 
 
     <footer>
@@ -265,7 +473,7 @@ input[type="submit"] {
              <h2 class="ft-title">Stay Updated</h2>
              <p>Subscribe to our newsletter to get our latest news.</p>
              <form id="fm">
-               <input type="email" name="email" placeholder="Enter email address">
+               <input id = "news_email"type="email" name="email" placeholder="Enter email address">
                <input type="submit" value="Subscribe">
              </form>
            </div>
@@ -288,9 +496,18 @@ input[type="submit"] {
            <ul class="ft-legal-list">
              <li><a href="#">Terms &amp; Conditions</a></li>
              <li><a href="#">Privacy Policy</a></li>
-             <li>&copy; 2019 Copyright Nowrap Inc.</li>
+             <li>&copy; 2019 Copyright Team Flingoo Inc.</li>
            </ul>
          </section>
        </footer>
+       <script type="text/javascript">
+       $(document).ready(function () {
+
+  $('#sidebarCollapse').on('click', function () {
+      $('#sidebar').toggleClass('active');
+  });
+
+});
+       </script>
   </body>
 </html>
