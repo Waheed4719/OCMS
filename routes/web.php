@@ -27,7 +27,7 @@ Route::get('admin/check_normalusers','AdminController@check_normalusers')->name(
 
 Route::get('admin/blog/view_posts','AdminController@view_posts')->name('view_all');
 
-Route::get('/posts','PostsController@index');
+Route::get('/posts','PostsController@index')->name('advices');
 Route::get('/landing',function(){
   return view('home.landing');
 });
@@ -35,7 +35,7 @@ Route::get('/landing',function(){
 
 Auth::routes();
 
-Route::get('/home', 'PostsController@index')->name('home');
+// Route::get('/home', 'PostsController@index')->name('home');
 
 
 Route::GET('admin/home','AdminController@index');

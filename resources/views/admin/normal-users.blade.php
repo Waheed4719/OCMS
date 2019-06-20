@@ -23,7 +23,7 @@
         <tr>
             <td>{{$u->name}}</td>
             <td>{{$u->email}}</td>
-            <td><a href="" class="btn btn-primary">Edit</a><a href="" class="btn btn-danger">Delete</a></td>
+            <td><a href="" class="far fa-edit"></a><a href="" class="fa fa-trash"></a></td>
         </tr>
       @endforeach
   </table>

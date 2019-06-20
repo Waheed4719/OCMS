@@ -9,6 +9,9 @@
     td a {
       margin: 0px 5px;
     }
+    .fas{
+      margin:10px;
+    }
   </style>
 
   <h1 align=center class ="mb-3">All Admins</h1>
@@ -22,7 +25,7 @@
         <tr>
             <td>{{$a->name}}</td>
             <td>{{$a->email}}</td>
-            <td><a href="" class="btn btn-primary">Edit</a><a href="" class="btn btn-danger">Delete</a></td>
+            <td><a href="" class="fas fa-edit"></a><a href="" class="fas fa-trash"></a><a href="" class="fas fa-envelope"></a></td>
         </tr>
       @endforeach
 

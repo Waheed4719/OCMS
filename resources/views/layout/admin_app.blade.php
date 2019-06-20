@@ -7,7 +7,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+    <link rel="stylesheet" href="{{asset('/css/fontawesome.css')}}">
        <link rel="stylesheet" href="{{asset('css/all.css')}}">
     <title></title>
   </head>
@@ -140,7 +140,7 @@ input[type="submit"] {
 
 .ft-legal {
     padding: 0.9375rem 1.875rem;
-    background-color: #ffe4dc;
+    background-color: #03356b;
 }
 .ft-legal-list {
     width: 100%;
@@ -152,11 +152,11 @@ input[type="submit"] {
 .ft-legal-list li {
     margin: 0.125rem 0.625rem;
     white-space: nowrap;
-    color:black !important;
+    color:white !important;
     font-weight:bold;
 }
 .ft-legal-list li a {
-  color:black !important;
+  color:white !important;
   font-weight:bold;
 }
 /* one before the last child */
