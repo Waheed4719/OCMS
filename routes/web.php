@@ -24,8 +24,14 @@ Route::get('admin/check_admins','AdminController@check_admins')->name('check_adm
 Route::get('admin/register','Admin\RegisterController@create')->name('admin.register')->middleware('auth:admin');
 Route::post('admin/register','Admin\RegisterController@store')->name('admin.register');
 Route::get('admin/check_normalusers','AdminController@check_normalusers')->name('check_normalusers');
-
 Route::get('admin/blog/view_posts','AdminController@view_posts')->name('view_all');
+
+
+Route::get('therapist','TherapistLoginController@showLoginForm')->name('Therapist.login');
+Route::POST('therapist/','TherapistLoginController@login')->name('log');
+
+
+Route::get('therapist/profile','TherapistController@profile')->name('Therapist.profile')->middleware('auth:therapist');
 Route::get('/Appointments','AppointmentsController@index');
 
 Route::get('/posts','PostsController@index')->name('advices');

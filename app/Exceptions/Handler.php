@@ -58,6 +58,9 @@ class Handler extends ExceptionHandler
         case 'admin':
           $redirect=route('admin.login');
           break;
+        case 'therapist':
+          $redirect = route('Therapist.profile');
+          break;
 
         default:
           $redirect=route('login');
@@ -66,7 +69,7 @@ class Handler extends ExceptionHandler
         return $request->expectsJson()
                     ? response()->json(['message' => $exception->getMessage()], 401)
                     : redirect()->guest($redirect);
-                    
+
     }
 
 }

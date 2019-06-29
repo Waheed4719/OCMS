@@ -210,6 +210,9 @@
                   <li class="nav-item">
                       <a class="nav-link"data-toggle="modal" data-target="#exampleModalCenter" href="">{{ __('Login') }}</a>
                       </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{route('Therapist.login')}}">{{ __('Login as Therapist') }}</a>
+                          </li>
 
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

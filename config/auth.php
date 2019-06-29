@@ -44,6 +44,10 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+        'therapist' => [
+            'driver' => 'session',
+            'provider' => 'therapists',
+        ],
 
         'api' => [
             'driver' => 'token',
@@ -79,6 +83,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
         ],
+        'therapists' => [
+            'driver' => 'eloquent',
+            'model' => App\Therapists::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -109,6 +117,11 @@ return [
         ],
         'admins' => [
             'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'therapists' => [
+            'provider' => 'therapists',
             'table' => 'password_resets',
             'expire' => 60,
         ],

@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Therapists;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 class TherapistController extends Controller
 {
     /**
@@ -18,7 +20,12 @@ class TherapistController extends Controller
       $therapist = Therapists::paginate(6);
         return view('Therapists.index',compact('therapist'));
     }
+    public function profile()
+    {
+      Auth::guard('therapist');
+      return view('Therapists.profile');
 
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -37,7 +44,7 @@ class TherapistController extends Controller
      */
     public function store(Request $request)
     {
-    
+
     }
 
     /**

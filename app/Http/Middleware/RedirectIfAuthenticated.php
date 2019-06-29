@@ -24,6 +24,9 @@ class RedirectIfAuthenticated
         if ('admin' === $guard) {
             return redirect('/admin/home');
         }
+        if('therapist' === $guard){
+          return redirect('/therapist/profile');
+        }
         return redirect('/home');
     }
 
