@@ -19,6 +19,9 @@ class User extends Authenticatable
      public function posts(){
        return $this->hasMany('App\post');
      }
+     public function Appointment(){
+       return $this->hasMany('App\Appointments','patient_id');
+     }
 
      public function Therapists(){
        return $this->hasMany('App\Therapists');

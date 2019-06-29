@@ -35,7 +35,7 @@
 }
 .card{
   border: 2px solid #eee;
-  margin-left: 10em;
+  /* margin-left: 10em; */
 }
 .card-text{
 
@@ -61,11 +61,11 @@ body{
 
 
 
-
+<div class="row">
   @foreach ($therapist as $therapists)
 
 
-    <div class="p-4 mt-3 mb-3 card">
+    {{-- <div class="p-4 mt-3 mb-3 card">
         <div class="row">
             <div class="col-md-4 col-sm-4">
             <img style="width:80%"src="/storage/images/{{$therapists->image}}" alt="">
@@ -80,9 +80,39 @@ body{
         </div>
 
 
-    </div>
-  @endforeach
+    </div> --}}
 
+
+
+
+
+
+
+
+  <div class="col-md-4 ">
+    <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{$therapists->name}}</h5>
+  </div>
+  <ul class="list-group ">
+    <li class="list-group-item">{{$therapists->id}}</li>
+    <li class="list-group-item">{{$therapists->email}}</li>
+
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">view more..</a>
+  </div>
+  </div>
+  </div>
+
+
+
+
+
+  @endforeach
+</div>
 {{$therapist->links()}}
 
 {{-- </div>

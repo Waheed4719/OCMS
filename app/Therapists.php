@@ -13,6 +13,9 @@ class Therapists extends Model
     public function User(){
       return $this->belongsto('App\User');
     }
+    public function Appointment(){
+      return $this->hasMany('App\Appointments','therapist_id');
+    }
     protected $dates = [
       'created_at',
     ];

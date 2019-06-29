@@ -26,6 +26,7 @@ Route::post('admin/register','Admin\RegisterController@store')->name('admin.regi
 Route::get('admin/check_normalusers','AdminController@check_normalusers')->name('check_normalusers');
 
 Route::get('admin/blog/view_posts','AdminController@view_posts')->name('view_all');
+Route::get('/Appointments','AppointmentsController@index');
 
 Route::get('/posts','PostsController@index')->name('advices');
 Route::get('/landing',function(){
