@@ -1,7 +1,13 @@
 @extends('layout.app')
 
 @section('content')
+  <style media="screen">
+    img{
+      box-shadow: 7px 3px 15px grey;
+    }
 
+
+  </style>
     <div>
             <a class="mt-5 mb-5 btn btn-secondary" href="/posts">Go Back</a>
     </div>

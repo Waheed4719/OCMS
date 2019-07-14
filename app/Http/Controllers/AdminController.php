@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use App\Admin;
 use App\Therapists;
 use App\User;
@@ -41,7 +44,7 @@ class AdminController extends Controller
     }
     public function create_posts(){
 
-      return view('Admin.blog.create_posts');
+      return view('Admin.blog.create');
     }
 
     public function check_therapists(){
@@ -56,6 +59,52 @@ class AdminController extends Controller
     public function check_normalusers(){
       $users = User::paginate(6);
         return view('admin.normal-users',compact('users'));
+    }
+
+    public function create_users(){
+      return view('admin.create_users');
+    }
+
+    public function create_therapist_users(){
+      return view('admin.create_therapists');
+    }
+
+    public function store_therapist_info(Request $request){
+      $this->validate($request, [
+          'email' => 'required',
+          'password' => 'required',
+          'name' => 'required',
+          'image' => 'image|nullable|max:10000'
+
+      ]);
+
+      //Handle file upload
+      if($request->hasFile('image')){
+          //Get filename with exetension
+          $filenameWithExt = $request->file('image')->getClientOriginalName();
+          //Get just file name
+          $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+          //Get just ext
+          $extension = $request->file('image')->getClientOriginalExtension();
+          //Filename to store
+          $fileNameToStore = $filename.'_'.time().'.'.$extension;
+          //Upload image
+          $path = $request->file('image')->storeAs('public/therapists/images', $fileNameToStore);
+
+      }
+      else{
+          $fileNameToStore = 'noimage.jpg';
+      }
+
+      // create post
+      $therapist = new Therapists;
+      $therapist->name = $request->input('name');
+      $therapist->email = $request->input('email');
+      $therapist->image = $fileNameToStore;
+      $therapist->password = Hash::make($request['password']);
+      $therapist->save();
+
+      return redirect('/admin/check_therapists')->with('success', 'Therapist User Created');
     }
 
     public function UserRole()

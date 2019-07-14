@@ -1,6 +1,11 @@
 @extends('layout.app')
 
 @section('content')
+  <style media="screen">
+  .card{
+      box-shadow: 7px 4px 10px grey;
+  }
+  </style>
     <h1 class = "mt-5">Posts</h1>
     @if(count($posts)>0)
         @foreach($posts as $post)

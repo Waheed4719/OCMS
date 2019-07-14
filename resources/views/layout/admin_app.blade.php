@@ -310,7 +310,7 @@ ul ul a {
               <a class="nav-link" href= {{ url('/landing') }}>Home</a>
             </li>
             <li class="nav-item {{ Request::is('UserRole') ? 'active' : '' }}">
-              <a class="nav-link" href= {{ Route('UserRole') }}>User Roles</a>
+              <a class="nav-link " href= {{ Route('UserRole') }}>User Roles</a>
             </li>
             <li class="nav-item {{ Request::is('posts') ? 'active' : '' }}">
               <a class="nav-link" href= {{ url('/posts') }}>Advices</a>
@@ -383,7 +383,7 @@ ul ul a {
             <ul class="list-unstyled components">
                 <p id="AD">Admin Dashboard</p>
                 <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle active">User Roles</a>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle "><i class="fas fa-user" style="margin-right:20px;"></i>User Roles</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
                             <a href="{{route("check_admins")}}">Admins</a>
@@ -400,7 +400,7 @@ ul ul a {
                     <a href="#">About</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Blog</a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-blog" style="margin-right:20px;"></i>Blog</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
                             <a href="{{route('view_all')}}">View All</a>

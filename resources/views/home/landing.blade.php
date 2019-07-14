@@ -17,7 +17,7 @@
   }
 
   .active{
-    border-bottom: 2px solid red;
+
 
   }
 
@@ -28,10 +28,3 @@
 
   </div>
 @endsection
-
-
-
-
-
-
-  

@@ -40,6 +40,9 @@ class TherapistLoginController extends Controller
     {
         return view('Therapists.login');
     }
+    public function create(){
+
+    }
 
     protected function guard()
     {

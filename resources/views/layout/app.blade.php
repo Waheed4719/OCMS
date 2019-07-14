@@ -7,6 +7,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" href="{{asset('/css/fontawesome.css')}}">
     <link rel="stylesheet" href="{{asset('css/layout.css')}}">
        <link rel="stylesheet" href="{{asset('css/all.css')}}">
@@ -22,6 +23,14 @@
         font-weight: 200;
         height: 100vh;
         margin: 0;
+    }
+    .navbar li a{
+      font-weight: bold;
+
+    }
+    .navbar-brand{
+      font-weight: 800 !important;
+      color:white !important;
     }
     #login{
       color:black !important;
@@ -60,11 +69,10 @@
         padding-bottom: 0.625rem;
     }
     .b ul a{
-      color: royal blue ;
+      color:  royalblue ;
       font-weight: bold;
     }
     .active{
-      border-bottom: 2px solid red;
 
     }
 
@@ -74,8 +82,11 @@
         flex-direction: column;
     }
     .bg-dark{
-      background-color: #1692BF !important;
+      /* background-color: #1692BF !important; */
+      /* background-color: #345d68 !important; */
+      background-color: #e3714f !important;
     }
+
 
     .container {
         flex: 1;    /* same as flex-grow: 1; */
@@ -85,7 +96,8 @@
         padding: 1.25rem 1.875rem;
         display: flex;
         flex-wrap: wrap;
-        background-color: #005073;
+        /* background-color: #005073; */
+        background-color: darkslategray;
     }
     .ft-main-item {
         padding: 1.25rem;
@@ -131,7 +143,9 @@
     }
 
     .ft-social {
-        padding: 0 1.875rem 1.25rem;
+        padding: 0 1.875rem 0.85rem;
+        /* background-color: #1692bf; */
+        background-color: #2fa2a1;
     }
     .ft-social-list {
         display: flex;
@@ -146,7 +160,8 @@
 
     .ft-legal {
         padding: 0.9375rem 1.875rem;
-        background-color: #333;
+        /* background-color: #03356b; */
+        background-color: darkslategray;
     }
     .ft-legal-list {
         width: 100%;
@@ -184,7 +199,9 @@
             <li class="nav-item {{ Request::is('posts') ? 'active' : '' }}">
               <a class="nav-link" href= {{ url('/posts') }}>Advices</a>
             </li>
-
+            <li class="nav-item {{ Request::is('posts') ? 'active' : '' }}">
+              <a class="nav-link" href= {{ url('/Appointments') }}>Appointments</a>
+            </li>
 
 
 
@@ -359,11 +376,11 @@
             </div>
           </div>
         </nav>
-
+@include('inc.messages')
 
 
     <div class="container c mt-3">
-    @include('inc.messages')
+
     @yield('content')
     </div>
 
@@ -427,5 +444,9 @@
            </ul>
          </section>
        </footer>
+       <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+       <script>
+       CKEDITOR.replace( 'article-ckeditor' );
+       </script>
   </body>
 </html>

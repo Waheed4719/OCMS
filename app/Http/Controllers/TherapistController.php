@@ -33,7 +33,7 @@ class TherapistController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -44,7 +44,7 @@ class TherapistController extends Controller
      */
     public function store(Request $request)
     {
-
+      
     }
 
     /**

@@ -28,7 +28,7 @@
       @endforeach
   </table>
   <div class="text-center" >
-    <a href="{{ route('create') }}" id = "btn" class = "btn btn-success">Create a Normal User</a>
+    <a href="{{ route('create_users') }}" id = "btn" class = "btn btn-success">Create a Normal User</a>
 
   </div>
 @endsection

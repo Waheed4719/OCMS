@@ -30,7 +30,7 @@
 
   </table>
   <div class="text-center" >
-    <a href="{{ route('create') }}" id = "btn" class = "btn btn-success">Create a Therapist User</a>
+    <a href="{{ route('create_therapist_user') }}" id = "btn" class = "btn btn-success">Create a Therapist User</a>
 
   </div>
 @endsection

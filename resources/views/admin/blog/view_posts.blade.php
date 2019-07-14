@@ -8,7 +8,7 @@
     td a {
       margin: 0px 5px;
     }
-    
+
 
 
 
@@ -38,7 +38,7 @@
         <p>No Posts Found</p>
     @endif
     <div class="text-center" >
-      <a href="{{ route('create') }}" id = "btn" class = "btn btn-success">Create a thread</a>
+      <a href="{{ route('create_posts') }}" id = "btn" class = "btn btn-success">Create a thread</a>
 
     </div>
 
