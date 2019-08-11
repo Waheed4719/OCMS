@@ -20,6 +20,10 @@ class CreateTherapistTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('religion')->nullable();
+            $table->Integer('age')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('speciality')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

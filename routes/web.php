@@ -33,9 +33,18 @@ Route::get('admin/create_users','AdminController@create_users')->name('create_us
 Route::get('admin/create_therapist_user','AdminController@create_therapist_users')->name('create_therapist_user');
 Route::post('admin/create_therapist_user','AdminController@store_therapist_info')->name('store_therapist_info');
 
+
+//New layout
+Route::get('/new',function(){
+  return view('layout.new');
+});
+
+
 Route::get('therapist','TherapistLoginController@showLoginForm')->name('Therapist.login');
 Route::POST('therapist/','TherapistLoginController@login')->name('log');
 Route::get('therapist/profile','TherapistController@profile')->name('Therapist.profile')->middleware('auth:therapist');
+Route::get('/therapists', 'TherapistController@index')->name('therapists');
+Route::get('/therapists/search','TherapistController@search')->name('live_search');
 
 Route::get('/Appointments','AppointmentsController@index');
 
@@ -66,7 +75,7 @@ Route::GET('admin-password/reset','Admin\ForgotPasswordController@showLinkReques
 Route::POST('admin-password/reset','Admin\ResetPasswordController@reset');
 Route::GET('admin/password/reset/{token}','Admin\ResetPasswordController@showResetForm');
 
-Route::get('/therapists', 'TherapistController@index')->name('therapists');
+
 
 
 ?>

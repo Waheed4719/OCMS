@@ -3,13 +3,16 @@
   <head>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    {{-- <script src="{{asset('js/jquery-2.2.4.min.js')}}" charset="utf-8"></script> --}}
+    {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> --}}
+    <script src="{{asset('/js/jquery-3.4.1.js')}}" charset="utf-8"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('/css/fontawesome.css')}}">
-    <link rel="stylesheet" href="{{asset('css/layout.css')}}">
+
        <link rel="stylesheet" href="{{asset('css/all.css')}}">
 
     <title></title>
@@ -191,7 +194,7 @@
           <ul class="navbar-nav mr-auto one">
             <li  class="nav-item {{ Request::is('landing') ? 'active' : '' }}">
 
-                <a class="nav-link" href= {{ url('/landing') }}>Home</a>
+                <a class="nav-link" href= {{ url('/new') }}>Home</a>
             </li>
             <li class="nav-item {{ Request::is('therapists') ? 'active' : '' }}">
               <a class="nav-link" href= {{ url('/therapists') }}>Therapists</a>
@@ -448,5 +451,6 @@
        <script>
        CKEDITOR.replace( 'article-ckeditor' );
        </script>
+
   </body>
 </html>
