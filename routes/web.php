@@ -14,10 +14,20 @@
 Route::get('/', function () {
     return view('home.landing');
 });
+Route::get('/home', function () {
+    return view('home');
+});
+Route::get('/chat', function () {
+    return view('chat');
+});
+Route::get('/therapist/profile/chat', function () {
+    return view('chat');
+})->middleware('auth:therapist');
 
 Route::resource('posts','PostsController');
 
-
+Route::get('/userlist', 'MessageController@user_list')->name('user.list');
+Route::get('/userMessage/{id}', 'MessageController@user_Message')->name('user.Message');
 
 //Admin Routes
 Route::GET('admin/home','AdminController@index');
@@ -40,11 +50,13 @@ Route::get('/new',function(){
 });
 
 
-Route::get('therapist','TherapistLoginController@showLoginForm')->name('Therapist.login');
-Route::POST('therapist/','TherapistLoginController@login')->name('log');
+Route::get('therapist/login','TherapistLoginController@showLoginForm')->name('Therapist.login');
+Route::POST('therapist/login','TherapistLoginController@login')->name('log');
 Route::get('therapist/profile','TherapistController@profile')->name('Therapist.profile')->middleware('auth:therapist');
 Route::get('/therapists', 'TherapistController@index')->name('therapists');
+// Route::get('/therapists/search','TherapistController@search')->name('live_search');
 Route::get('/therapists/search','TherapistController@search')->name('live_search');
+
 
 Route::get('/Appointments','AppointmentsController@index');
 

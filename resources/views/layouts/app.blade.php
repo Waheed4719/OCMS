@@ -18,13 +18,15 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{-- {{ config('app.name', 'Laravel') }} --}}
+                    OCMS
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -67,6 +69,31 @@
                                 </div>
                             </li>
                         @endguest
+
+
+                        <li class="nav-item">
+                          <a class="nav-link" href=" {{ url('/new') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href=" {{ url('/therapists') }}">Therapists</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href=" {{ url('/posts') }}">Advice</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href=" {{ url('/chat') }}">Appointment</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Contact</a>
+                        </li>
+
+
+
+
+
                     </ul>
                 </div>
             </div>
@@ -76,5 +103,136 @@
             @yield('content')
         </main>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer class="pt-5 pb-4" id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
+                        <h5 class="mb-4 font-weight-bold">ABOUT US</h5>
+                        <p class="mb-4">We are with you till the end.</p>
+                        <ul class="f-address">
+                            <li>
+                                <div class="row">
+                                    <div class="col-1"><i class="fas fa-map-marker"></i></div>
+                                    <div class="col-10">
+                                        <h6 class="font-weight-bold mb-0">Address:</h6>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-1"><i class="far fa-envelope"></i></div>
+                                    <div class="col-10">
+                                        <h6 class="font-weight-bold mb-0">Have any questions?</h6>
+                                        <p><a href="#">Support@userthemes.com</a></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-1"><i class="fas fa-phone-volume"></i></div>
+                                    <div class="col-10">
+                                        <h6 class="font-weight-bold mb-0">Address:</h6>
+                                        <p><a href="#">+880 1672365547</a></p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
+                        <h5 class="mb-4 font-weight-bold">FRESH TWEETS</h5>
+                        <ul class="f-address">
+                            <li>
+                                <div class="row">
+                                    <div class="col-1"><i class="fab fa-twitter"></i></div>
+                                    <div class="col-10">
+                                        <p class="mb-0"><a href="#">@userthemesrel </a> HTML Version Out Now</p>
+                                        <label>10 Mins Ago</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-1"><i class="fab fa-twitter"></i></div>
+                                    <div class="col-10">
+                                        <p class="mb-0"><a href="#">@userthemesrel </a> HTML Version Out Now</p>
+                                        <label>10 Mins Ago</label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-1"><i class="fab fa-twitter"></i></div>
+                                    <div class="col-10">
+                                        <p class="mb-0"><a href="#">@userthemesrel </a> HTML Version Out Now</p>
+                                        <label>10 Mins Ago</label>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
+                        <h5 class="mb-4 font-weight-bold">NAVIGATION</h5>
+                        <ul class="recent-post">
+                            <li>
+                                <a href="#">Home</a>
+                            </li>
+                            <li>
+                                <a href="#">Therapists</a>
+                            </li>
+                            <li>
+                                <a href="#">Advice</a>
+                            </li>
+                            <li>
+                                <a href="#">About</a>
+                            </li>
+                            <li>
+                                <a href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
+                        <h5 class="mb-4 font-weight-bold">CONNECT WITH US</h5>
+                        <div class="input-group">
+                              <input type="text" class="form-control" placeholder="Your Email Address">
+                              <span class="input-group-addon" id="basic-addon2"><i class="fas fa-check"></i></span>
+                        </div>
+                        <ul class="social-pet mt-4">
+                            <li><a href="#" title="facebook"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#" title="twitter"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#" title="google-plus"><i class="fab fa-google-plus-g"></i></a></li>
+                            <li><a href="#" title="instagram"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Copyright -->
+        <section class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <div class="text-center text-white">
+                            &copy; 2019 OCMS. All Rights Reserved.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
 </body>
 </html>

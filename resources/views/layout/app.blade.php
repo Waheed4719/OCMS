@@ -3,8 +3,6 @@
   <head>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    {{-- <script src="{{asset('js/jquery-2.2.4.min.js')}}" charset="utf-8"></script> --}}
-    {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> --}}
     <script src="{{asset('/js/jquery-3.4.1.js')}}" charset="utf-8"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -12,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('/css/fontawesome.css')}}">
-
+<link rel="stylesheet" href="{{asset('sass/app.scss')}}">
        <link rel="stylesheet" href="{{asset('css/all.css')}}">
 
     <title></title>

@@ -27,6 +27,10 @@ class User extends Authenticatable
        return $this->hasMany('App\Therapists');
      }
 
+     public function message(){
+       return $this->hasMany(Message::class,'to');
+     }
+
     protected $fillable = [
         'name', 'email', 'password',
     ];
@@ -48,4 +52,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 }

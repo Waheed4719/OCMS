@@ -95,16 +95,23 @@ class AdminController extends Controller
       else{
           $fileNameToStore = 'noimage.jpg';
       }
-
+      $em = $request->input('email');
       // create post
       $therapist = new Therapists;
+
       $therapist->name = $request->input('name');
       $therapist->email = $request->input('email');
       $therapist->image = $fileNameToStore;
       $therapist->password = Hash::make($request['password']);
       $therapist->save();
 
+
+      // $th = Therapists::where('email',$em)->select('id')->first();
+      //
+      // // $th1 = (string)$th;
+      // $th2 = "$th";
       return redirect('/admin/check_therapists')->with('success', 'Therapist User Created');
+      // return $th;
     }
 
     public function UserRole()

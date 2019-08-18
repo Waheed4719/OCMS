@@ -68,58 +68,32 @@ color: #999;
       <label class="form-check-label" for="inlineRadio1">Muslim</label>
     </div>
     <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Christian">
-      <label class="form-check-label" for="inlineRadio2">Christian</label>
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Christian">
+      <label class="form-check-label" for="inlineRadio1">Christian</label>
     </div>
-    <input type="text" class="form-control" name="" id="search" value="">
+    <input type="text" class="form-control  p-3" name="" id="search" value="" placeholder="Search by name,religion or age">
     </ul>
+
+    <div class="card-header">
+      Age Group
+    </div>
+    <ul class="list-group list-group-flush">
+      <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="46">
+      <label class="form-check-label" for="inlineRadio2"> 46 </label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="35">
+      <label class="form-check-label" for="inlineRadio2"> 35 </label>
+    </div>
+
+    </ul>
+
   </div>
+
+
 </div>
 
-  {{-- @foreach ($therapist as $therapists)
-
-@if($therapists->age<46)
-    <div class="col-xs-12 col-sm-10  col-md-4 mt-4">
-              <div class="well well-sm">
-                  <div class="row ">
-                      <div class="col-sm-6 col-md-4 text-center">
-                          <img  style="width:100%" src="/storage/therapists/images/{{$therapists->image}}" alt="" class="img-rounded img-responsive" />
-                          <button type="button" class="btn profile btn-primary">
-                              View Profile</button>
-                      </div>
-                      <div class="col-sm-6 col-md-8">
-                          <h4><strong>{{$therapists->name}}</strong></h4>
-                          <small><cite title="San Francisco, USA">San Francisco, USA <i class="glyphicon glyphicon-map-marker">
-                          </i></cite></small>
-                          <p>
-                              <i class="glyphicon glyphicon-envelope"></i>email@example.com
-                              <br />
-                              <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
-                              <br />
-                              <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
-                          <!-- Split button -->
-                          <div class="btn-group">
-                              <button type="button" class="btn social btn-primary">
-                                  Social</button>
-                              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                  <span class="caret"></span><span class="sr-only">Social</span>
-                              </button>
-                              <ul class="dropdown-menu" role="menu">
-                                  <li><a href="#">Twitter</a></li>
-                                  <li><a href="https://plus.google.com/+Jquery2dotnet/posts">Google +</a></li>
-                                  <li class="divider"></li>
-                                  <li><a href="#">Github</a></li>
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>@endif
-
-
-
-
-  @endforeach --}}
   <div class="col-md-9 ">
     <div class="row dva">
 
@@ -151,6 +125,20 @@ color: #999;
       })
     }
     jQuery(document).on('keyup','#search',function(){
+      jQuery('.form-check-input').prop('checked',false);
+
+      var query = $(this).val();
+      fetch_customer_data(query);
+
+
+    });
+    jQuery(document).on('click','#inlineRadio1',function(){
+
+      var query = $(this).val();
+      fetch_customer_data(query);
+
+    });
+    jQuery(document).on('click','#inlineRadio2',function(){
 
       var query = $(this).val();
       fetch_customer_data(query);

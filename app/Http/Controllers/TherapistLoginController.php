@@ -34,7 +34,8 @@ class TherapistLoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:therapist')->except('logout');
+        // $this->middleware('guest:therapist')->except('logout');
+        $this->middleware('guest')->except('logout');
     }
     public function showLoginForm()
     {

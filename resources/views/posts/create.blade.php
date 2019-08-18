@@ -9,8 +9,8 @@
         {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title'])}}
     </div>
     <div class="form-group">
-        {{Form::label('content', 'Content')}}
-        {{Form::textarea('content', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body text'])}}
+        {{Form::label('body', 'Body')}}
+        {{Form::textarea('body', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body text'])}}
     </div>
     <div class="form-group">
         {{Form::file('image')}}

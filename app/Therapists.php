@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Therapists extends Authenticatable 
+class Therapists extends Authenticatable
 {
 // protected $guard = 'therapist';
   protected $fillable = [
@@ -22,4 +22,8 @@ class Therapists extends Authenticatable
     protected $dates = [
       'created_at',
     ];
+    protected $guard = 'therapist';
+    public function message(){
+      return $this->hasMany(Message::class,'from');
+    }
 }

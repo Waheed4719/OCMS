@@ -47,7 +47,7 @@
             <a class="nav-link js-scroll-trigger" href= {{ url('/posts') }}>Advices</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#">Drop</a>
+            <a class="nav-link js-scroll-trigger" href="{{ url('/chat') }}">Appointment</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#">About</a>

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
+use Auth;
 use App\Post;
 use App\User;
 class PostsController extends Controller
@@ -16,7 +16,7 @@ class PostsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' =>['index', 'show']]);
+        $this->middleware('auth:therapist', ['except' =>['index', 'show']]);
     }
 
     /**
@@ -28,6 +28,7 @@ class PostsController extends Controller
     {
         $posts = Post::orderBy('created_at', 'asc')->paginate(5);
         return view('posts.index')->with('posts', $posts);
+
     }
 
     /**
@@ -50,7 +51,7 @@ class PostsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'content' => 'required',
+            'body' => 'required',
             'image' => 'image|nullable|max:10000'
         ]);
 
@@ -75,7 +76,7 @@ class PostsController extends Controller
         // create post
         $post = new Post;
         $post->title = $request->input('title');
-        $post->content = $request->input('content');
+        $post->body = $request->input('body');
         $post->user_id = auth()->user()->id;
         $post->image = $fileNameToStore;
         $post->save();
@@ -135,7 +136,7 @@ class PostsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'content' => 'required'
+            'body' => 'required'
         ]);
 
          //Handle file upload
@@ -157,7 +158,7 @@ class PostsController extends Controller
         // create post
         $post = Post::find($id);
         $post->title = $request->input('title');
-        $post->content = $request->input('content');
+        $post->body = $request->input('body');
         if($request->hasFile('image')){
             $post->image = $fileNameToStore;
         }

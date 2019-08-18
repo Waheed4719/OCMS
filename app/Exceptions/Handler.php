@@ -59,7 +59,7 @@ class Handler extends ExceptionHandler
           $redirect=route('admin.login');
           break;
         case 'therapist':
-          $redirect = route('Therapist.profile');
+          $redirect = route('Therapist.login');
           break;
 
         default:
