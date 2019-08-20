@@ -1,5 +1,11 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('content')
-  <h1>This is the therapist profile page</h1>
+
+
+
+  <div class="container py-4 " style="height:500px;">
+  <h1>Therapist Dashboard</h1>
+  </div>
+
 @endsection

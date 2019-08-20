@@ -39,6 +39,10 @@ class TherapistLoginController extends Controller
     }
     public function showLoginForm()
     {
+      if(auth::guard('therapist')->check()){
+        return redirect()->route('Therapist.profile');
+      }
+      else
         return view('Therapists.login');
     }
     public function create(){
@@ -49,4 +53,13 @@ class TherapistLoginController extends Controller
     {
         return Auth::guard('therapist');
     }
+
+    public function logout(Request $request)
+   {
+       Auth::guard('therapist')->logout();
+       $request->session()->flush();
+       $request->session()->regenerate();
+       return redirect()->guest(route( 'therapist.login' ));
+   }
+
 }

@@ -12,22 +12,37 @@
 */
 
 Route::get('/', function () {
-    return view('home.landing');
+    return view('layout.new');
 });
 Route::get('/home', function () {
     return view('home');
 });
 Route::get('/chat', function () {
     return view('chat');
-});
+})->name('patient_Chat')->middleware('auth');
 Route::get('/therapist/profile/chat', function () {
     return view('chat');
-})->middleware('auth:therapist');
+})->name('therapist_Chat')->middleware('auth:therapist');
 
 Route::resource('posts','PostsController');
 
+
+
+
+
+
+//Chat Routes
 Route::get('/userlist', 'MessageController@user_list')->name('user.list');
 Route::get('/userMessage/{id}', 'MessageController@user_Message')->name('user.Message');
+Route::Post('/sendMessage', 'MessageController@send_Message')->name('user.Message.send');
+Route::get('/deleteSingleMessage/{id}', 'MessageController@delete_Single_Message')->name('user.Message.delete.single');
+Route::get('/deleteAllMessages/{id}', 'MessageController@delete_All_Messages')->name('user.Message.delete.all');
+
+
+
+
+
+
 
 //Admin Routes
 Route::GET('admin/home','AdminController@index');

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Auth;
 class LoginController extends Controller
 {
     /*
@@ -38,6 +38,15 @@ class LoginController extends Controller
     }
     public function showLoginForm()
     {
+      if(Auth::guard('therapist')->check()){
+      $message = "Must logout first";
+      return redirect()->route('Therapist.profile')->with('error', 'Must logout first');
+  }
+
+      else
         return view('auth.login');
+
+
+
     }
 }

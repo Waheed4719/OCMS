@@ -6,7 +6,7 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+// @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
 
@@ -25,6 +25,7 @@ $gray: #92959E;
   margin: 0 auto;
   width:750px;
   background: #444753;
+  // background-color: royalblue;
   border-radius: 5px;
 }
 
@@ -49,16 +50,19 @@ $gray: #92959E;
   .fa-search {
     position: relative;
     left: -25px;
+
   }
 
   ul {
     padding: 20px;
     height: 770px;
+    overflow-y: scroll;
     li {
       padding-bottom: 20px;
       color: white;
       list-style: none;
       cursor: pointer;
+
     }
   }
 

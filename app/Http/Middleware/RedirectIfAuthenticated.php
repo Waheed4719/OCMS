@@ -27,7 +27,7 @@ class RedirectIfAuthenticated
         if('therapist' === $guard){
           return redirect('/therapist/profile');
         }
-        return redirect('/home');
+        return redirect()->back()->with('error','Must log out first');
     }
 
 
