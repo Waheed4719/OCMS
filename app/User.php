@@ -20,7 +20,7 @@ class User extends Authenticatable
        return $this->hasMany('App\post');
      }
      public function Appointment(){
-       return $this->hasMany('App\Appointments','patient_id');
+       return $this->hasOne('App\Appointments','patient_id');
      }
 
      public function Therapists(){

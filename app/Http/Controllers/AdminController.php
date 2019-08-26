@@ -62,19 +62,68 @@ class AdminController extends Controller
     }
 
     public function create_users(){
-      return view('admin.create_users');
+      return view('admin.register_user');
+    }
+    public function store_user_info(Request $request){
+      $this->validate($request, [
+        'name' => 'required',
+          'email' => 'required',
+          'password' => 'required',
+          // 'phone' => 'required',
+          // 'image' => 'image|nullable|max:10000',
+          // 'gender' => 'required',
+          // 'religion' => 'required',
+
+      ]);
+
+      //Handle file upload
+      // if($request->hasFile('image')){
+      //     //Get filename with exetension
+      //     $filenameWithExt = $request->file('image')->getClientOriginalName();
+      //     //Get just file name
+      //     $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+      //     //Get just ext
+      //     $extension = $request->file('image')->getClientOriginalExtension();
+      //     //Filename to store
+      //     $fileNameToStore = $filename.'_'.time().'.'.$extension;
+      //     //Upload image
+      //     $path = $request->file('image')->storeAs('public/therapists/images', $fileNameToStore);
+      //
+      // }
+      // else{
+      //     $fileNameToStore = 'noimage.jpg';
+      // }
+
+
+      $user = new User;
+
+      $user->name = $request->input('name');
+      $user->email = $request->input('email');
+      // $user->image = $fileNameToStore;
+      $user->password = Hash::make($request['password']);
+      // $therapist->phone = $request->input('phone');
+      // $user->gender = $request->input('gender');
+      $user->save();
+
+
+
+      return redirect('/admin/check_normalusers')->with('success', 'User Created');
+
     }
 
     public function create_therapist_users(){
-      return view('admin.create_therapists');
+      return view('admin.register_therapist');
     }
 
     public function store_therapist_info(Request $request){
       $this->validate($request, [
+        'name' => 'required',
           'email' => 'required',
           'password' => 'required',
-          'name' => 'required',
-          'image' => 'image|nullable|max:10000'
+          'phone' => 'required',
+          'image' => 'image|nullable|max:10000',
+          'gender' => 'required',
+          'religion' => 'required',
 
       ]);
 
@@ -95,23 +144,30 @@ class AdminController extends Controller
       else{
           $fileNameToStore = 'noimage.jpg';
       }
-      $em = $request->input('email');
-      // create post
+
+
       $therapist = new Therapists;
 
       $therapist->name = $request->input('name');
       $therapist->email = $request->input('email');
       $therapist->image = $fileNameToStore;
       $therapist->password = Hash::make($request['password']);
+      // $therapist->phone = $request->input('phone');
+      $therapist->gender = $request->input('gender');
+      $therapist->religion = $request->input('religion');
+      $therapist->age = $request->input('age');
       $therapist->save();
 
 
-      // $th = Therapists::where('email',$em)->select('id')->first();
-      //
-      // // $th1 = (string)$th;
-      // $th2 = "$th";
+
       return redirect('/admin/check_therapists')->with('success', 'Therapist User Created');
-      // return $th;
+
+    }
+    public function delete_therapist($id){
+
+        $therapist = Therapists::find($id);
+        $therapist->delete();
+        return redirect('admin/check_therapists')->with('success', 'Therapist User Deleted');
     }
 
     public function UserRole()

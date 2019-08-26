@@ -44,4 +44,16 @@ return [
         ],
     ],
 
+    'facebook' => [
+    'client_id' => '365506851026612',
+    'client_secret' => 'd48aa1d1ad87771d15a53335c0bcdeff',
+    'redirect' => 'http://webapp.test/login/facebook/callback',
+],
+
+'facebook' => [
+'client_id' => '365506851026612',
+'client_secret' => 'd48aa1d1ad87771d15a53335c0bcdeff',
+'redirect' => 'http://webapp.test/login/facebook/callback',
+],
+
 ];

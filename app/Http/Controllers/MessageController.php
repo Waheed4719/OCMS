@@ -9,7 +9,7 @@ use App\Therapists;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Events\MessageSend;
 class MessageController extends Controller
 {
   public function __construct(){
@@ -148,17 +148,14 @@ class MessageController extends Controller
                 'type' => 0,
                 'd-type' =>1,
               ]);
-
-
-
-
-
             }
+
               else  if(Auth::guard('web')->check()){
                 $messages = Message::create([
                   'message' =>$request->message,
                   'to' =>auth()->user()->id,
                   'from' => $request->user_id,
+                  'type' => 1,
                   'd-type' => 0,
                 ]);
 
@@ -167,10 +164,12 @@ class MessageController extends Controller
                   'to' =>auth()->user()->id,
                   'from' => $request->user_id,
                   'd-type' => 1,
+                  'type' => 1,
                 ]);
 
               }
               // return response()->json($messages,201);
+              broadcast(new MessageSend($messages));
               return response()->json($messages,201);
 
           }

@@ -38,7 +38,7 @@ class LoginController extends Controller
     }
     public function showLoginForm()
     {
-        return view('admin.login');
+        return view('admin.admin_login');
     }
 
     protected function guard()

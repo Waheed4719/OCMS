@@ -1,6 +1,7 @@
-@extends('layout.app')
+@extends('layouts.blog')
 
 @section('content')
+
     <h1>Edit Post</h1>
 
     {!! Form::open(['action' => ['PostsController@update', $post->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
@@ -18,6 +19,12 @@
     {{Form::hidden('_method', 'PUT')}}
     {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
     {!! Form::close() !!}
+
+
+
+
+
+
 
 
 @endsection

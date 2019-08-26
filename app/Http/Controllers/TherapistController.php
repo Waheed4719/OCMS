@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Therapists;
+use App\Appointments;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -19,6 +20,7 @@ class TherapistController extends Controller
     public function index()
     {
       $therapist = Therapists::paginate(6);
+
         return view('Therapists.Therapists',compact('therapist'));
     }
     public function profile()
@@ -27,11 +29,21 @@ class TherapistController extends Controller
       return view('Therapists.profile');
 
     }
+
+    public function show($id)
+    {
+      $therapist = Therapists::find($id);
+
+      return view('Therapists.check_profile')->with('therapist', $therapist);
+
+    }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function search(Request $request)
     {
       $output = '';
@@ -43,7 +55,9 @@ class TherapistController extends Controller
           $data = DB::table('therapists')
           ->Where('Name','like','%'.$query.'%')
           ->orWhere('religion','like','%'.$query.'%')
+          ->orWhere('gender','like','%'.$query.'%')
           ->orWhere('age','like','%'.$query.'%')
+          ->orWhere('speciality','like','%'.$query.'%')
           ->orderBy('name','desc')
           ->get();
         }
@@ -53,6 +67,7 @@ class TherapistController extends Controller
           ->get();
         }
         $total_row = $data->count();
+        $url = '/new';
         if($total_row>0)
         {
           // $output .= '<h1 class = "text-center"> Total Number of Records are'.$total_row.'</h1>';
@@ -63,7 +78,7 @@ class TherapistController extends Controller
 
 
 
-            <div class="col-xl-3 col-md-6 mb-4">
+            <div class="col-xl-4 col-md-6 mb-4 ">
               <div class="card border-0 shadow">
                 <img src="/storage/therapists/images/'.$row->image.'" class="card-img-top" alt="...">
                 <div class="card-body text-center">
@@ -71,7 +86,7 @@ class TherapistController extends Controller
                       <div class="card-text text-black-50">San Fransisco, USA</div>
                       <div class="card-text text-black-50">'.$row->email.'</div>
                       <div class="card-text text-black-50">www.jhoncarter.com</div>
-                      <div><button type="button" href="" class="btn btn-primary mt-3" style="background-color: #4056F4 !important;">View Profile</button></div>
+                      <div><button type="button" class="btn btn-primary mt-3" style="color: white;background-color: #4056F4 !important;"><a style="color: white;" href="therapist/profile/'.$row->id.'">View Profile</a></button></div>
                    </div>
               </div>
             </div>';
@@ -89,7 +104,7 @@ class TherapistController extends Controller
         }
         else{
           $output = '
-              <h1>No matches found</h1>
+              <h1>No matches found! </h1>
           ';
         }
         $data = array(
@@ -117,10 +132,6 @@ class TherapistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -154,5 +165,12 @@ class TherapistController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function therapists_Appointments(){
+      $ap = Appointments::all()->get();
+      $therapist = Auth::guard('therapist')->user()->id;
+      $th = $therapist->Appointment()->get()->paginate(4);
+
+      return view('Therapists.Therapists_Appointments',compact('ap','th'));
     }
 }

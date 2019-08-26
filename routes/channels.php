@@ -11,6 +11,24 @@
 |
 */
 
-Broadcast::channel('App.User.{id}', function ($user, $id) {
-    return (int) $user->id === (int) $id;
+// Broadcast::channel('chat.{id}', function ($user, $id) {
+//     return (int) $user->id === (int) $id;
+// });
+
+Broadcast::channel('chat.{id}', function ($user) {
+    return $user;
 });
+
+// Broadcast::routes(['middleware' => ['web']]);
+// Broadcast::channel('chat.{id}', function ($user) {
+//     return $user;
+// });
+// Broadcast::routes(['middleware'=>['auth:web']]);
+// Broadcast::routes(['middleware'=>['auth:therapist']]);
+
+// if(Auth::guard('web')->check()){
+
+// }
+// elseif(Auth::guard('therapist')->check()){
+  Broadcast::routes(['middleware' => ['web','auth:therapist']]); //Red to grinch
+// }

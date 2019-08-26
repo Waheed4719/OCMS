@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('content')
 
@@ -40,55 +40,60 @@
     }
   </style>
 
+<div class="container">
+  @foreach ($u as $us)
 
-@foreach ($u as $us)
 
+  {{-- <h3>{{$us->users->name}}, you have an Appointment with {{$us->therapists->name}}</h3> --}}
 
-{{-- <h3>{{$us->users->name}}, you have an Appointment with {{$us->therapists->name}}</h3> --}}
+  <div class="row">
+      <div class="col-md-8 col-sm-8">
+  <div class="p-4 mt-3 mb-3 card Ap">
 
-<div class="row">
-    <div class="col-md-8 col-sm-8">
-<div class="p-4 mt-3 mb-3 card Ap">
-
-          <h3 >Appointment:</h3>
-          <hr color="silver"  height:5px;>
-          <section class ="r">
-            <div class="item">
-              <p>Therapist: </p>
-              <p>Issue: </p>
-              <p>Type of Appointment: </p>
-            </div>
-
-            <div class="item">
-              <p>{{$us->therapists->name}}</p>
-                <p>Marriage Problems</p>
-              <p>Text-Chat</p>
-            </div>
-          </section>
-
-        </div>
-        <div class="col-md-1 col-sm-1">
-
-        </div></div>
-
-        <div class="col-md-3 col-sm-3">
-
-          <div class="p-4 mt-3 mb-3 card Ap">
-
-            <h3>Data and Time</h3>
+            <h3 >Appointment:</h3>
             <hr color="silver"  height:5px;>
-            <h5>{{$us->date}}</h5>
+            <section class ="r">
+              <div class="item">
+                <p>Therapist: </p>
+                <p>Issue: </p>
+                <p>Type of Appointment: </p>
+              </div>
 
-            <h3 style="margin-top: 20px;">Venue</h3>
-            <hr color="silver"  height:5px;>
-            <h5>Online Chat Portal</h5>
-        </div>
+              <div class="item">
+                <p>{{$us->therapists->name}}</p>
+                  <p>{{$us->issue}}</p>
+                <p>{{$us->medium}}</p>
+              </div>
+            </section>
 
-    </div>
+          </div>
+          <div class="col-md-1 col-sm-1">
 
+          </div></div>
+
+          <div class="col-md-3 col-sm-3">
+
+            <div class="p-4 mt-3 mb-3 card Ap">
+
+              <h3>Data and Time</h3>
+              <hr color="silver"  height:5px;>
+              <h5>{{$us->day}}</h5>
+
+              <h3 style="margin-top: 20px;">Venue</h3>
+              <hr color="silver"  height:5px;>
+              <h5>{{$us->medium}}</h5>
+          </div>
+
+      </div>
+
+
+  </div>
+  <div class="text-center my-4" >
+    <a href="{{ route('patient_Chat') }}" id = "btn" class = "btn btn-success">Chat with Therapist</a>
+
+  </div>
+  @endforeach
 
 </div>
-
-@endforeach
 
 @endsection

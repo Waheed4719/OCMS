@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Agency - Start Bootstrap Theme</title>
+  <title>HOME | OCMS</title>
 
   <!-- Bootstrap core CSS -->
   <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -24,7 +24,19 @@
   <link href="{{asset('css/agency.css')}}" rel="stylesheet">
 
 </head>
-
+<style media="screen">
+  .err{
+    height: 30px;
+    width:100%;
+    background-color: royalblue;
+    margin-top: 0px;
+    padding-top: 2px;
+    padding-bottom:1px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+  }
+</style>
 <body id="page-top">
 
   <!-- Navigation -->
@@ -37,6 +49,84 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ml-auto">
+          {{-- <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact">Login</a>
+          </li> --}}
+
+
+
+
+
+
+          @guest
+            @guest('therapist')
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('login') }}">{{ __('Sign in') }}</a>
+              </li>
+            @endguest
+
+              {{-- @if (Route::has('register'))
+                  <li class="nav-item">
+                      <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                  </li>
+              @endif --}}
+          @else
+            @Auth('web')                            <li class="nav-item dropdown">
+                  <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                      {{ Auth::user()->name }} <span class="caret"></span>
+                  </a>
+
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    	<a class="dropdown-item" href="#">{{ __('Profile') }}</a>
+                      <a class="dropdown-item" href="{{ route('logout') }}"
+                         onclick="event.preventDefault();
+                                       document.getElementById('logout-form').submit();">
+                          {{ __('Logout') }}
+                      </a>
+
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          @csrf
+                      </form>
+                  </div>
+              </li>
+            @endAuth
+          @endguest
+          @guest('therapist')
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('Therapist.login')}}">{{ __('Therapist Login') }}</a>
+                </li>
+          @endguest
+          @auth('therapist')
+          <li class="nav-item dropdown">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  {{ Auth::guard('therapist')->user()->name }} <span class="caret"></span>
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                	<a class="dropdown-item" href="#">{{ __('Profile') }}</a>
+                  <a class="dropdown-item" href="{{ route('logout') }}"
+                     onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();">
+                      {{ __('Logout') }}
+                  </a>
+
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                  </form>
+              </div>
+          </li>
+        @endauth
+
+
+
+
+
+
+
+
+
+
+
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href= {{ url('/new') }}>Home</a>
           </li>
@@ -46,19 +136,20 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href= {{ url('/posts') }}>Advices</a>
           </li>
+          @Auth
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="{{ url('/chat') }}">Appointment</a>
-          </li>
+            <a class="nav-link js-scroll-trigger" href="{{ url('/Appointments') }}">Appointment</a>
+          </li>@endAuth
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#">About</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-          </li>
+
         </ul>
       </div>
     </div>
   </nav>
+
+
 
   <!-- Header -->
   <header class="masthead image-overlay">
@@ -70,7 +161,7 @@
       </div>
     </div>
   </header>
-
+@include('inc.messages')
   <!-- Services -->
   <section class="page-section" id="services">
     <div class="container">

@@ -13,6 +13,12 @@
         {{Form::textarea('body', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body text'])}}
     </div>
     <div class="form-group">
+        {!! Form::label('category', 'Category', ['class' => 'col-lg-2 control-label'] )  !!}
+
+          {!!  Form::select('category', ['Teenage Issues' => 'Teenage Issues', 'Parental Issues' => 'Parental Issues', 'Peer Pressure' => 'Peer Pressure', 'Marital Issues' => 'Marital Issues'],  'MI', ['class' => 'form-control' ]) !!}
+
+       </div>
+    <div class="form-group">
         {{Form::file('image')}}
     </div>
     {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}

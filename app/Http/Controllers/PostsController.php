@@ -16,8 +16,13 @@ class PostsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:therapist', ['except' =>['index', 'show']]);
+      if(Auth::guard('therapist')->check()){
+          $this->middleware('auth:therapist');
+      }
+      else{
+      // $this->middleware('auth', ['except' =>['index', 'show']]);
     }
+  }
 
     /**
      * Display a listing of the resource.
@@ -26,11 +31,43 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'asc')->paginate(5);
-        return view('posts.index')->with('posts', $posts);
+      $TI = Post::all()->where('category','Teenage Issues')->count();
+      $MI = Post::all()->where('category','Marital Issues')->count();
+      $PI = Post::all()->where('category','Parental Issues')->count();
+      $PP = Post::all()->where('category','Peer Pressure')->count();
+        $posts = Post::orderBy('created_at', 'asc')->paginate(4);
+        $ALL = $posts->count();
+        return view('posts.index')->with('posts', $posts)->with(compact('TI','MI','PI','PP','ALL'));
 
     }
 
+    public function filter($filter)
+    {
+      $TI = Post::all()->where('category','Teenage Issues')->count();
+      $MI = Post::all()->where('category','Marital Issues')->count();
+      $PI = Post::all()->where('category','Parental Issues')->count();
+      $PP = Post::all()->where('category','Peer Pressure')->count();
+      if($filter == 'TI'){
+        $posts = Post::all()->where('category','Teenage Issues')->sortBy('created_at');
+      }
+      elseif($filter == 'MI'){
+        $posts = Post::all()->where('category','Marital Issues')->sortBy('created_at');
+      }
+      elseif($filter == 'PI'){
+        $posts = Post::all()->where('category','Parental Issues')->sortBy('created_at');
+      }
+      else{
+        $posts = Post::all()->where('category','Peer Pressure')->sortBy('created_at');
+      }
+
+      if($posts->count() > 4){
+        $posts = $posts->paginate(4);
+      }
+      $ALL = Post::all()->count();
+
+        return view('posts.index')->with('posts', $posts)->with(compact('TI','MI','PI','PP','ALL'))->with('success','Filtered on demand');
+
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -52,7 +89,8 @@ class PostsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
-            'image' => 'image|nullable|max:10000'
+            'image' => 'image|nullable|max:10000',
+            'category' => 'required',
         ]);
 
         //Handle file upload
@@ -77,7 +115,8 @@ class PostsController extends Controller
         $post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body');
-        $post->user_id = auth()->user()->id;
+        $post->category = $request->input('category');
+        $post->user_id = auth()->guard('therapist')->user()->id;
         $post->image = $fileNameToStore;
         $post->save();
 
@@ -108,7 +147,7 @@ class PostsController extends Controller
         $post = Post::find($id);
 
         //Check for correct user
-        if(auth()->user()->id !== $post->user_id){
+        if(Auth::guard('therapist')->user()->id !== $post->user_id){
             return redirect('/posts')->with('error', 'Unauthorized Page');
         }
        return view('posts.edit')->with('post', $post);
@@ -117,8 +156,8 @@ class PostsController extends Controller
 
     public function myposts()
     {
-      $user_id = auth()->user()->id;
-      $user = User::find($user_id);
+      $user_id = Auth::guard('therapist')->user()->id;
+      $user = Therapists::find($user_id);
       $posts = $user->posts()->paginate(3);
       return view('posts.myposts',compact('posts'));
 
@@ -178,7 +217,7 @@ class PostsController extends Controller
         $post = Post::find($id);
 
         //Check for correct user
-        if(auth()->user()->id !== $post->user_id){
+        if(Auth::guard('therapist')->user()->id !== $post->user_id){
             return redirect('/posts')->with('error', 'Unauthorized Page');
         }
 

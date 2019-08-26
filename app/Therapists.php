@@ -11,7 +11,7 @@ class Therapists extends Authenticatable
 {
 // protected $guard = 'therapist';
   protected $fillable = [
-      'name', 'email', 'password',
+      'name', 'email', 'password','gender','religion','age'
   ];
     public function User(){
       return $this->belongsto('App\User');
@@ -23,7 +23,11 @@ class Therapists extends Authenticatable
       'created_at',
     ];
     protected $guard = 'therapist';
+
     public function message(){
       return $this->hasMany(Message::class,'from');
+    }
+    public function posts(){
+      return $this->hasMany('App\post');
     }
 }

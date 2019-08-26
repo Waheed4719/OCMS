@@ -1,4 +1,4 @@
-@extends('layout.admin_app')
+@extends('admin.admin_home')
 
 @section('content')
 
@@ -14,26 +14,44 @@
     }
   </style>
 
-  <h1 align=center class ="mb-3">All Admins</h1>
-  <table class="table table-striped">
-      <tr>
-          <th>User Roles</th>
-          <th>Email</th>
-          <th>Action</th>
-      </tr>
-      @foreach ($admins as $a)
-        <tr>
-            <td>{{$a->name}}</td>
-            <td>{{$a->email}}</td>
-            <td><a href="" class="fas fa-edit"></a><a href="" class="fas fa-trash"></a><a href="" class="fas fa-envelope"></a></td>
-        </tr>
-      @endforeach
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Admin Table</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Users</th>
+              <th>Email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th>Users</th>
+              <th>Email</th>
+              <th>Action</th>
+            </tr>
+          </tfoot>
+          <tbody>
+            @foreach ($admins as $u)
+              <tr>
+                  <td>{{$u->name}}</td>
+                  <td>{{$u->email}}</td>
+                  <td><a href="" class="far fa-edit"></a><a href="" class="fa fa-trash"></a></td>
+              </tr>
+            @endforeach
 
+          </tbody>
+          {{$admins->links()}}
+        </table>
+        <div class="text-center" >
+          <a href="{{ route('admin.register') }}" id = "btn" class = "btn btn-success">Create an Admin User</a>
 
-
-  </table>
-  <div class="text-center" >
-    <a href="{{ route('admin.register') }}" id = "btn" class = "btn btn-success">Create an Admin User</a>
-
+        </div>
+      </div>
+    </div>
   </div>
 @endsection

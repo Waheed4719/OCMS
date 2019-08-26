@@ -109,6 +109,17 @@
     export default {
 
     mounted() {
+      Echo.private(`chat.${authuser.id}`)
+      .listen('MessageSend',(e) => {
+        if(e.message.type == 0){
+          this.selectUser(e.message.from);
+        }
+        else{
+            this.selectUser(e.message.to);
+        }
+
+        console.log(e.message.message);
+      });
             this.$store.dispatch('userList');
         },
 

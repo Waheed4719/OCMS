@@ -9,9 +9,9 @@ class Appointments extends Model
   protected $table = 'Appointments';
   public $primaryKey = 'id';
   public $timestamps = true;
-  protected $dates = ['date'];
+  protected $dates = [];
   protected $fillable=[
-    'patient_id','therapist_id','date','time'
+    'patient_id','therapist_id','day','time','issue','medium'
   ];
   public function therapists(){
     return $this->belongsTo('App\Therapists','therapist_id');

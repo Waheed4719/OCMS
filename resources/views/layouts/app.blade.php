@@ -12,10 +12,15 @@
 
 
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="{{asset('/js/jquery-3.4.1.js')}}" charset="utf-8"></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
+      <script src="{{asset('/js/jquery-3.4.1.js')}}" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="{{ asset('js/app.js') }}" defer></script>
+
+
 
 
 
@@ -34,6 +39,9 @@
         font-weight: bold;
         text-align: center;
       }
+      #contact h5{
+        color: white;
+      }
     </style>
 
 
@@ -48,9 +56,11 @@
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/all.css')}}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{asset('admin-sb2/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
     <link href="{{ asset('css/agency.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('/css/fontawesome.css')}}">
+
 </head>
 <body>
     <div id="app">
@@ -90,6 +100,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                  	<a class="dropdown-item" href="#">{{ __('Profile') }}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -115,6 +126,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                              	<a class="dropdown-item" href="{{route('Therapist.profile')}}">{{ __('Profile') }}</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
@@ -136,9 +148,10 @@
                         <li class="nav-item">
                           <a class="nav-link" href=" {{ url('/posts') }}">Advice</a>
                         </li>
+                        @Auth
                         <li class="nav-item">
-                          <a class="nav-link" href=" {{ url('/chat') }}">Appointment</a>
-                        </li>
+                          <a class="nav-link" href=" {{ url('/Appointments') }}">Appointment</a>
+                        </li>@endAuth
                         <li class="nav-item">
                           <a class="nav-link" href="#">About</a>
                         </li>
@@ -289,7 +302,19 @@
                 </div>
             </div>
         </section>
+@if(Auth::guard('web')->check())
+<script type="text/javascript">
+  var authuser = @JSON(Auth::guard('web')->user());
+</script>
 
-
+@elseif(Auth::guard('therapist')->check())
+<script type="text/javascript">
+  var authuser = @JSON(Auth::guard('therapist')->user());
+</script>
+@endif
+<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+<script>
+CKEDITOR.replace( 'article-ckeditor' );
+</script>
 </body>
 </html>

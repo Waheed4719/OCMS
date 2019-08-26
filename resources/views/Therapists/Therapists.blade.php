@@ -16,47 +16,67 @@
         </div>
       </header>
 
-
-
-
-
-
-<div class="container-fluid row ">
-  <div class="card m-4 text-center" style="width: 14rem;height:16rem;border:none; ">
-    <div class="card-header" >
-      <strong>Religion</strong>
-    </div>
-    <ul class="list-group list-group-flush">
-      <div class="form-check form-check-inline mt-2">
-      <input class="form-check-input ml-3" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Muslim">
-      <label class="form-check-label" for="inlineRadio1">Muslim</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input ml-3" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Christian">
-      <label class="form-check-label" for="inlineRadio1">Christian</label>
-    </div>
-    <input type="text" class="form-control mt-2  p-3" name="" id="search" value="" placeholder="Search by name,religion or age">
-    </ul>
-
-    <div class="card-header">
-      <strong>Age Group</strong>
-    </div>
-    <ul class="list-group list-group-flush pb-2 mt-2">
-      <div class="form-check form-check-inline">
-      <input class="form-check-input ml-3" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="46">
-      <label class="form-check-label" for="inlineRadio2"> 46 </label>
-    </div>
-    <div class="form-check form-check-inline mb-2 pb-2">
-      <input class="form-check-input ml-3 " type="radio" name="inlineRadioOptions" id="inlineRadio2" value="35">
-      <label class="form-check-label" for="inlineRadio2"> 35 </label>
-    </div>
-
-    </ul>
-
-  </div>
   <div class="container ">
 
-    <div class="row dva">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="list-group mb-4 ">
+           <a href="#" class="list-group-item "><strong>Religion</strong></a>
+             <div class="form-check form-check-inline mt-2">
+             <input class="form-check-input ml-3" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Muslim">
+             <label class="form-check-label" for="inlineRadio1">Muslim</label>
+           </div>
+           <div class="form-check form-check-inline mt-2">
+             <input class="form-check-input ml-3" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Christian">
+             <label class="form-check-label" for="inlineRadio1">Christian</label>
+           </div>
+           <div class="form-check form-check-inline my-2">
+             <input class="form-check-input ml-3" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Hindu">
+             <label class="form-check-label" for="inlineRadio1">Hindu</label>
+           </div>
+           <div class="form-check form-check-inline mb-2">
+             <input class="form-check-input ml-3" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Buddhist">
+             <label class="form-check-label" for="inlineRadio1">Buddhist</label>
+           </div>
+
+           <a href="#" class="list-group-item mt-2"><strong>Gender</strong></a>
+           <div class="form-check form-check-inline mt-2">
+           <input class="form-check-input ml-3" type="radio" name="inlineRadioOptions" id="inlineRadio2" value='Male'>
+           <label class="form-check-label" for="inlineRadio2">Male</label>
+           </div>
+           <div class="form-check form-check-inline my-2 pb-2">
+           <input class="form-check-input ml-3 " type="radio" name="inlineRadioOptions" id="inlineRadio2" value='Female'>
+           <label class="form-check-label" for="inlineRadio2">Female</label>
+           </div>
+
+           <a href="#" class="list-group-item mt-2"><strong>Specialities</strong></a>
+           <div class="form-check form-check-inline my-2 ">
+           <input class="form-check-input ml-3" type="radio" name="inlineRadioOptions" id="inlineRadio3" value='Marital Problems'>
+           <label class="form-check-label" for="inlineRadio3">Marital Problems</label>
+           </div>
+           <div class="form-check form-check-inline my-2 ">
+           <input class="form-check-input ml-3 " type="radio" name="inlineRadioOptions" id="inlineRadio3" value='Teenage Issues'>
+           <label class="form-check-label" for="inlineRadio3">Teenage Issues</label>
+           </div>
+           <div class="form-check form-check-inline my-2 ">
+           <input class="form-check-input ml-3 " type="radio" name="inlineRadioOptions" id="inlineRadio3" value='Peer Pressure'>
+           <label class="form-check-label" for="inlineRadio3">Peer Pressure</label>
+           </div>
+           <div class="form-check form-check-inline my-2 ">
+           <input class="form-check-input ml-3 " type="radio" name="inlineRadioOptions" id="inlineRadio3" value='Parental Issues'>
+           <label class="form-check-label" for="inlineRadio3">Parental Issues</label>
+           </div>
+             <input type="text" class="form-control  my-2 p-3" name="" id="search" value="" placeholder="Search by Name/Religion/Gender">
+
+
+         </div>
+      </div>
+      <div class="col-lg-9 row dva ">
+
+
+      </div>
+
+
 
 
 
@@ -66,7 +86,7 @@
   </div>
   <!-- /.container -->
 
-</div>
+
       <!-- Page Content -->
 
 
@@ -122,6 +142,11 @@
 
           });
           jQuery(document).on('click','#inlineRadio2',function(){
+
+            var query = $(this).val();
+            fetch_customer_data(query);
+          });
+          jQuery(document).on('click','#inlineRadio3',function(){
 
             var query = $(this).val();
             fetch_customer_data(query);
